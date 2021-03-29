@@ -67,3 +67,21 @@ class LinkedList(Generic[T]):
                     self.size -= 1
                     return
                 head = head.next
+
+    def clear(self) -> None:
+        if self.head is None:
+            self.size = 0
+            return
+
+        self.__clear__(self.head)
+        self.head = None
+
+    def __clear__(self, node: Node['T']) -> None:
+        if node.next is not None:
+            self.__clear__(node.next)
+
+        node.next = None
+        self.size -= 1
+
+    def empty(self) -> bool:
+        return self.size == 0
