@@ -1,5 +1,5 @@
 # data-structures-and-algorithms-in-python
 
-![python-app](https://github.com/ianrobrien/data-structures-and-algorithms-in-python/actions/workflows/python-app.yml/badge.svg)
+![Python CI with pytest](https://github.com/ianrobrien/data-structures-and-algorithms-in-python/actions/workflows/ci.yml/badge.svg)
 
 Test
