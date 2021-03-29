@@ -8,12 +8,12 @@ class TreeNode(Generic[T]):
     right: Optional['TreeNode[T]'] = None
     value: Optional[T] = None
 
-    def __init__(self, value: T):
+    def __init__(self, item: T):
         """
         Create a TreeNode with the given value
-        :param value: the value of the TreeNode
+        :param item: the value of the TreeNode
         """
-        self.value = value
+        self.value = item
 
 
 class BinarySearchTree(Generic[T]):
@@ -21,30 +21,30 @@ class BinarySearchTree(Generic[T]):
     value: T = None
     size: int = 0
 
-    def add(self, value) -> None:
+    def add(self, item) -> None:
         """
         Add the given value to the tree
-        :param value: the value to add to the tree
+        :param item: the value to add to the tree
         :return:
         """
         if self.root is None:
-            self.root = TreeNode(value)
+            self.root = TreeNode(item)
         else:
-            self.__add__(value, self.root)
+            self.__add__(item, self.root)
 
         self.size += 1
 
-    def __add__(self, value: T, tree_node: TreeNode[T]) -> None:
-        if value > tree_node.value:
-            if tree_node.right is None:
-                tree_node.right = TreeNode(value)
+    def __add__(self, value: T, root: TreeNode[T]) -> None:
+        if value > root.value:
+            if root.right is None:
+                root.right = TreeNode(value)
             else:
-                self.__add__(value, tree_node.right)
+                self.__add__(value, root.right)
         else:
-            if tree_node.left is None:
-                tree_node.left = TreeNode(value)
+            if root.left is None:
+                root.left = TreeNode(value)
             else:
-                self.__add__(value, tree_node.left)
+                self.__add__(value, root.left)
 
     def contains(self, value: T) -> bool:
         """
@@ -59,16 +59,16 @@ class BinarySearchTree(Generic[T]):
 
         return self.__contains__(value, self.root)
 
-    def __contains__(self, value: T, tree_node: TreeNode[T]) -> bool:
-        if value > tree_node.value:
-            if tree_node.right is None:
+    def __contains__(self, value: T, root: TreeNode[T]) -> bool:
+        if value > root.value:
+            if root.right is None:
                 return False
-            if tree_node.right.value == value:
+            if root.right.value == value:
                 return True
-            return self.__contains__(value, tree_node.right)
+            return self.__contains__(value, root.right)
         else:
-            if tree_node.left is None:
+            if root.left is None:
                 return False
-            if tree_node.left.value == value:
+            if root.left.value == value:
                 return True
-            return self.__contains__(value, tree_node.left)
+            return self.__contains__(value, root.left)

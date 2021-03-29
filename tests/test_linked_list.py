@@ -26,3 +26,30 @@ class TestLinkedList:
         assert (linked_list.contains(10) is True)
         assert (linked_list.contains(20) is True)
         assert (linked_list.contains(50) is False)
+
+    def test_lined_list_remove(self) -> None:
+        # Remove from the head
+        linked_list = LinkedList()
+        linked_list.add(10)
+        linked_list.add(20)
+        linked_list.add(30)
+        linked_list.add(40)
+        linked_list.add(50)
+        linked_list.add(60)
+        linked_list.add(70)
+        assert (linked_list.size == 7)
+        linked_list.remove(10)
+        assert (linked_list.size == 6)
+        assert (linked_list.contains(10) is False)
+
+        # Remove from the middle
+        assert (linked_list.size == 6)
+        linked_list.remove(40)
+        assert (linked_list.size == 5)
+        assert (linked_list.contains(40) is False)
+
+        # Remove from the tail
+        assert (linked_list.size == 5)
+        linked_list.remove(70)
+        assert (linked_list.size == 4)
+        assert (linked_list.contains(70) is False)
